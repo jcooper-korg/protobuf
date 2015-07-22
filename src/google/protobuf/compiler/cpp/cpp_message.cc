@@ -967,6 +967,12 @@ GenerateClassDefinition(io::Printer* printer) {
               descriptor_->oneof_decl(i)->field(j)->name(), true),
           "field_number",
           SimpleItoa(descriptor_->oneof_decl(i)->field(j)->number()));
+      printer->Print(
+          "$field_name$ = $field_number$,\n",
+          "field_name",
+          ToUpper(descriptor_->oneof_decl(i)->field(j)->name()),
+          "field_number",
+          SimpleItoa(descriptor_->oneof_decl(i)->field(j)->number()));
     }
     printer->Print(
         "$cap_oneof_name$_NOT_SET = 0,\n",
